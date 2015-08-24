@@ -13,6 +13,7 @@ $chemin_abstract_classes="abstract";
 include $chemin_abstract_classes."/class.load.php";
 $loader=new Load();
 $tab_class=$loader->charg_dossier_dans_tab($chemin_abstract_classes);
+sort($tab_class);
 //print_r($tab_class);
 foreach($tab_class as $class_to_load)
 {
