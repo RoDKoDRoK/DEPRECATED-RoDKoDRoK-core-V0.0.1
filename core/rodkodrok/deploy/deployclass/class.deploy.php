@@ -149,6 +149,19 @@ class Deploy
 		if(file_exists("chain/connector.chain.default.php"))
 			return "Already installed site !!!";
 		
+		//check first folder access
+		$tabfoldertocheck=array();
+		$tabfoldertocheck[]="chain";
+		$tabfoldertocheck[]="connector";
+		$tabfoldertocheck[]="core";
+		$tabfoldertocheck[]="package";
+		foreach($tabfoldertocheck as $foldertocheck)
+		{
+			if(!file_exists($foldertocheck) && !is_dir($foldertocheck))
+				mkdir($foldertocheck,0777,true);
+			chmod($foldertocheck, 0777);
+		}
+		
 		//deploy des packages du site
 		$content="";
 		
